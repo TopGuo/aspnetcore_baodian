@@ -1,0 +1,1310 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>TB.AspNetCore.Domain</name>
+    </assembly>
+    <members>
+        <member name="M:TB.AspNetCore.Domain.Config.IJobCenter.AddScheduleJobAsync(TB.AspNetCore.Domain.Models.Web.TaskScheduleModel)">
+            <summary>
+            添加定时任务
+            </summary>
+            <param name="m"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TB.AspNetCore.Domain.Config.IJobCenter.StopScheduleJobAsync(System.String,System.String)">
+            <summary>
+            暂停定时任务
+            </summary>
+            <param name="jobGroup"></param>
+            <param name="jobName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TB.AspNetCore.Domain.Config.IJobCenter.RunScheduleJobAsync(TB.AspNetCore.Domain.Models.Web.TaskScheduleModel)">
+            <summary>
+            恢复定时任务
+            </summary>
+            <param name="m"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TB.AspNetCore.Domain.Config.ResponsResult.GetString(System.Enum)">
+            <summary>
+            
+            </summary>
+            <param name="_enum"></param>
+            <returns></returns>
+        </member>
+        <member name="T:TB.AspNetCore.Domain.Config.TbConstant">
+            <summary>
+            预配置常量
+            </summary>
+        </member>
+        <member name="F:TB.AspNetCore.Domain.Config.TbConstant.UploadKey">
+            <summary>
+            上传key
+            </summary>
+        </member>
+        <member name="F:TB.AspNetCore.Domain.Config.TbConstant.iOS_ApiKey">
+            <summary>
+            ioskey
+            </summary>
+        </member>
+        <member name="F:TB.AspNetCore.Domain.Config.TbConstant.Android_ApiKey">
+            <summary>
+            androidkey
+            </summary>
+        </member>
+        <member name="F:TB.AspNetCore.Domain.Config.TbConstant.WeChatApp_ApiKey">
+            <summary>
+            wechatkey
+            </summary>
+        </member>
+        <member name="F:TB.AspNetCore.Domain.Config.TbConstant.DefaultHeadPicture">
+            <summary>
+            默认头像图片相对服务器路径
+            </summary>
+        </member>
+        <member name="F:TB.AspNetCore.Domain.Config.TbConstant.WebSiteKey">
+            <summary>
+            WebSite
+            </summary>
+        </member>
+        <member name="F:TB.AspNetCore.Domain.Config.TbConstant.CanRequestAfterSecond">
+            <summary>
+            验证码等待时间
+            </summary>
+        </member>
+        <member name="F:TB.AspNetCore.Domain.Config.TbConstant.CodeValidMinutes">
+            <summary>
+            验证码有效时长（分钟）
+            </summary>
+        </member>
+        <member name="F:TB.AspNetCore.Domain.Config.TbConstant.WEBSITE_VERIFICATION_CODE">
+            <summary>
+            验证码
+            </summary>
+        </member>
+        <member name="F:TB.AspNetCore.Domain.Config.TbConstant.ShowAllDataCookie">
+            <summary>
+            是否展示所有数据标志
+            </summary>
+        </member>
+        <member name="F:TB.AspNetCore.Domain.Config.TbConstant.LAST_LOGIN_PATH">
+            <summary>
+            上次登录路径
+            </summary>
+        </member>
+        <member name="F:TB.AspNetCore.Domain.Config.TbConstant.CompanyName">
+            <summary>
+            公司名称
+            </summary>
+        </member>
+        <member name="F:TB.AspNetCore.Domain.Config.TbConstant.WEBSITE_AUTHENTICATION_SCHEME">
+            <summary>
+            网站授权协议
+            </summary>
+        </member>
+        <member name="F:TB.AspNetCore.Domain.Config.TbConstant.Log4RepositoryKey">
+            <summary>
+            日志配置容器名
+            </summary>
+        </member>
+        <member name="F:TB.AspNetCore.Domain.Config.TbConstant.Log4netKey">
+            <summary>
+            Log4Net 日志配置文件
+            </summary>
+        </member>
+        <member name="F:TB.AspNetCore.Domain.Config.TbConstant.RedisOptionsKey">
+            <summary>
+            Redis配置options
+            </summary>
+        </member>
+        <member name="F:TB.AspNetCore.Domain.Config.TbConstant.RedisConOptionsKey">
+            <summary>
+            RedisCon配置option
+            </summary>
+        </member>
+        <member name="F:TB.AspNetCore.Domain.DataProtection.Base256DataProtector._dataKeys">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:TB.AspNetCore.Domain.DataProtection.Base256Encoders.CheckIsBase256Code(System.String)">
+            <summary>
+            Check whether the the confusion string codes is valid Base256
+            </summary>
+            <param name="confusionCode"></param>
+        </member>
+        <member name="M:TB.AspNetCore.Domain.DataProtection.Base256Encoders.CreateConfusionCodes">
+            <summary>
+            Create new confusion string codes
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:TB.AspNetCore.Domain.DataProtection.Base256Options.Expires">
+            <summary>
+            default to 90 days
+            </summary>
+        </member>
+        <member name="T:TB.AspNetCore.Domain.DataProtection.Base64Encoders">
+            <summary>
+            base64 编码器
+            提供给base256 编码器使用
+            modify by 鸟窝
+            </summary>
+        </member>
+        <member name="M:TB.AspNetCore.Domain.DataProtection.Base64Encoders.Base64Decode(System.String)">
+            <summary>
+            Decodes a base64url-encoded string. 解码base64字符串
+            </summary>
+            <param name="input">The base64url-encoded input to decode.输入base64编码的字符串</param>
+            <returns>The base64url-decoded form of the input.输出base64解码后的字符串</returns>
+            <remarks>
+            The input must not contain any whitespace or padding characters.输入不能包含任何空字符和填充字符
+            Throws <see cref="T:System.FormatException" /> if the input is malformed. 否则抛出formatException异常
+            </remarks>
+        </member>
+        <member name="M:TB.AspNetCore.Domain.DataProtection.Base64Encoders.Base64Decode(System.String,System.Int32,System.Int32)">
+            <summary>
+            Decodes a base64url-encoded substring of a given string.解码给定字符串的base64url编码的子字符串
+            </summary>
+            <param name="input">A string containing the base64url-encoded input to decode.输入要解码的包含base64编码的字符串</param>
+            <param name="offset">The position in <paramref name="input" /> at which decoding should begin.输入字符串要解码开始的位置</param>
+            <param name="count">The number of characters in <paramref name="input" /> to decode.要解码字符串的个数</param>
+            <returns>The base64url-decoded form of the input.输入的字符串base64解码后的形式</returns>
+            <remarks>
+            The input must not contain any whitespace or padding characters.
+            Throws <see cref="T:System.FormatException" /> if the input is malformed.
+            </remarks>
+        </member>
+        <member name="M:TB.AspNetCore.Domain.DataProtection.Base64Encoders.Base64Decode(System.String,System.Int32,System.Char[],System.Int32,System.Int32)">
+            <summary>
+            Decodes a base64url-encoded <paramref name="input" /> into a <c>byte[]</c>.将base64编码的字符串解码为byte[]形式
+            </summary>
+            <param name="input">A string containing the base64url-encoded input to decode.输入包含base64编码的需要解码的字符串</param>
+            <param name="offset">The position in <paramref name="input" /> at which decoding should begin.开始位置</param>
+            <param name="buffer">
+            Scratch buffer to hold the <see cref="T:System.Char" />s to decode. Array must be large enough to hold        
+            <paramref name="bufferOffset" /> and <paramref name="count" /> characters as well as Base64 padding
+            characters. Content is not preserved.
+            </param>
+            <param name="bufferOffset">
+            The offset into <paramref name="buffer" /> at which to begin writing the <see cref="T:System.Char" />s to decode.
+            </param>
+            <paramref name ="bufferOffset"/>和<paramref name ="count"/>字符以及Base64填充字符。 内容未保留。
+            <param name="count">The number of characters in <paramref name="input" /> to decode.</param>
+            <returns>The base64url-decoded form of the <paramref name="input" />.</returns>
+            <remarks>
+            The input must not contain any whitespace or padding characters.
+            Throws <see cref="T:System.FormatException" /> if the input is malformed.
+            </remarks>
+        </member>
+        <member name="M:TB.AspNetCore.Domain.DataProtection.Base64Encoders.GetArraySizeRequiredToDecode(System.Int32)">
+            <summary>
+            Gets the minimum <c>char[]</c> size required for decoding of <paramref name="count" /> characters
+            with the <see cref="!:Base64UrlDecode(string, int, char[], int, int)" /> method.
+            </summary>
+            <param name="count">The number of characters to decode.</param>
+            <returns>
+            The minimum <c>char[]</c> size required for decoding  of <paramref name="count" /> characters.
+            </returns>
+        </member>
+        <member name="M:TB.AspNetCore.Domain.DataProtection.Base64Encoders.Base64Encode(System.Byte[])">
+            <summary>
+            Encodes <paramref name="input" /> using base64url encoding.
+            </summary>
+            <param name="input">The binary input to encode.</param>
+            <returns>The base64url-encoded form of <paramref name="input" />.</returns>
+        </member>
+        <member name="M:TB.AspNetCore.Domain.DataProtection.Base64Encoders.Base64Encode(System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            Encodes <paramref name="input" /> using base64url encoding.
+            </summary>
+            <param name="input">The binary input to encode.</param>
+            <param name="offset">The offset into <paramref name="input" /> at which to begin encoding.</param>
+            <param name="count">The number of bytes from <paramref name="input" /> to encode.</param>
+            <returns>The base64url-encoded form of <paramref name="input" />.</returns>
+        </member>
+        <member name="M:TB.AspNetCore.Domain.DataProtection.Base64Encoders.Base64Encode(System.Byte[],System.Int32,System.Char[],System.Int32,System.Int32)">
+            <summary>
+            Encodes <paramref name="input" /> using base64url encoding.
+            </summary>
+            <param name="input">The binary input to encode.</param>
+            <param name="offset">The offset into <paramref name="input" /> at which to begin encoding.</param>
+            <param name="output">
+            Buffer to receive the base64url-encoded form of <paramref name="input" />. Array must be large enough to
+            hold <paramref name="outputOffset" /> characters and the full base64-encoded form of
+            <paramref name="input" />, including padding characters.
+            </param>
+            <param name="outputOffset">
+            The offset into <paramref name="output" /> at which to begin writing the base64url-encoded form of
+            <paramref name="input" />.
+            </param>
+            <param name="count">The number of <c>byte</c>s from <paramref name="input" /> to encode.</param>
+            <returns>
+            The number of characters written to <paramref name="output" />, less any padding characters.
+            </returns>
+        </member>
+        <member name="M:TB.AspNetCore.Domain.DataProtection.Base64Encoders.GetArraySizeRequiredToEncode(System.Int32)">
+            <summary>
+            Get the minimum output <c>char[]</c> size required for encoding <paramref name="count" />
+            <see cref="T:System.Byte" />s with the <see cref="M:Microsoft.AspNetCore.DataProtection.Base64Encoders.Base64Encode(System.Byte[],System.Int32,System.Char[],System.Int32,System.Int32)" /> method.
+            </summary>
+            <param name="count">The number of characters to encode.</param>
+            <returns>
+            The minimum output <c>char[]</c> size required for encoding <paramref name="count" /> <see cref="T:System.Byte" />s.
+            </returns>
+        </member>
+        <member name="M:TB.AspNetCore.Domain.DataProtection.Base64Encoders.GetNumBase64PaddingCharsInString(System.String)">
+            <summary>
+            获取Base64填充字符串数
+            </summary>
+            <param name="str"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TB.AspNetCore.Domain.DataProtection.Base64Encoders.GetNumBase64PaddingCharsToAddForDecode(System.Int32)">
+            <summary>
+            获取Base64填充字符以添加解码数
+            </summary>
+            <param name="inputLength"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TB.AspNetCore.Domain.DataProtection.Base64Encoders.ValidateParameters(System.Int32,System.String,System.Int32,System.Int32)">
+            <summary>
+            验证参数
+            </summary>
+            <param name="bufferLength">大字符串长度</param>
+            <param name="inputName">输入名称</param>
+            <param name="offset">偏移量/开始截取的位置</param>
+            <param name="count">截取数量</param>
+        </member>
+        <member name="F:TB.AspNetCore.Domain.Enums.AccountStatus.Normal">
+            <summary>
+            注册
+            </summary>
+        </member>
+        <member name="F:TB.AspNetCore.Domain.Enums.AccountStatus.Blacklist">
+            <summary>
+            黑名单
+            </summary>
+        </member>
+        <member name="F:TB.AspNetCore.Domain.Enums.AccountType.Admin">
+            <summary>
+            管理员
+            </summary>
+        </member>
+        <member name="F:TB.AspNetCore.Domain.Enums.AccountType.StandardUser">
+            <summary>
+            普通用户
+            </summary>
+        </member>
+        <member name="F:TB.AspNetCore.Domain.Enums.AdLocation.Home">
+            <summary>
+            首页
+            </summary>
+        </member>
+        <member name="F:TB.AspNetCore.Domain.Enums.AdLocation.PaySuccessful">
+            <summary>
+            支付成功
+            </summary>
+        </member>
+        <member name="F:TB.AspNetCore.Domain.Enums.AdLocation.Login">
+            <summary>
+            登录页
+            </summary>
+        </member>
+        <member name="F:TB.AspNetCore.Domain.Enums.AdLocation.GongGao">
+            <summary>
+            公告
+            </summary>
+        </member>
+        <member name="F:TB.AspNetCore.Domain.Enums.AdLocation.SplashPage">
+            <summary>
+            启动页广告
+            </summary>
+        </member>
+        <member name="F:TB.AspNetCore.Domain.Enums.AdLocation.Banner">
+            <summary>
+            banner广告
+            </summary>
+        </member>
+        <member name="F:TB.AspNetCore.Domain.Enums.AllOrLocal.All">
+            <summary>
+            全网
+            </summary>
+        </member>
+        <member name="F:TB.AspNetCore.Domain.Enums.AllOrLocal.Local">
+            <summary>
+            本地
+            </summary>
+        </member>
+        <member name="F:TB.AspNetCore.Domain.Enums.ErrorCode.AccountDisabled">
+            <summary>
+            账户不可用
+            </summary>
+        </member>
+        <member name="F:TB.AspNetCore.Domain.Enums.ErrorCode.Existed">
+            <summary>
+            已存在
+            </summary>
+        </member>
+        <member name="F:TB.AspNetCore.Domain.Enums.ErrorCode.InvalidData">
+            <summary>
+            无效的输入
+            </summary>
+        </member>
+        <member name="F:TB.AspNetCore.Domain.Enums.ErrorCode.InvalidSign">
+            <summary>
+            签名错误
+            </summary>
+        </member>
+        <member name="F:TB.AspNetCore.Domain.Enums.ErrorCode.InvalidIdCard">
+            <summary>
+            不正确的身份证号码
+            </summary>
+        </member>
+        <member name="F:TB.AspNetCore.Domain.Enums.ErrorCode.InvalidMobile">
+            <summary>
+            不正确的手机号码
+            </summary>
+        </member>
+        <member name="F:TB.AspNetCore.Domain.Enums.ErrorCode.InvalidFullName">
+            <summary>
+            不正确的姓名
+            </summary>
+        </member>
+        <member name="F:TB.AspNetCore.Domain.Enums.ErrorCode.InvalidFormat">
+            <summary>
+            格式错误
+            </summary>
+        </member>
+        <member name="F:TB.AspNetCore.Domain.Enums.ErrorCode.InvalidPassword">
+            <summary>
+            密码不正确
+            </summary>
+        </member>
+        <member name="F:TB.AspNetCore.Domain.Enums.ErrorCode.InvalidToken">
+            <summary>
+            token不正确
+            </summary>
+        </member>
+        <member name="F:TB.AspNetCore.Domain.Enums.ErrorCode.InvalidLatitude">
+            <summary>
+            纬度不正确(-90~90)
+            </summary>
+        </member>
+        <member name="F:TB.AspNetCore.Domain.Enums.ErrorCode.InvalidLongitude">
+            <summary>
+            经度不正确(-180~180)
+            </summary>
+        </member>
+        <member name="F:TB.AspNetCore.Domain.Enums.ErrorCode.InvalidCity">
+            <summary>
+            城市信息不正确
+            </summary>
+        </member>
+        <member name="F:TB.AspNetCore.Domain.Enums.ErrorCode.BadRequest">
+            <summary>
+            请求错误
+            </summary>
+        </member>
+        <member name="F:TB.AspNetCore.Domain.Enums.ErrorCode.Unauthorized">
+            <summary>
+            未登录
+            </summary>
+        </member>
+        <member name="F:TB.AspNetCore.Domain.Enums.ErrorCode.Forbidden">
+            <summary>
+            权限不足,拒绝访问
+            </summary>
+        </member>
+        <member name="F:TB.AspNetCore.Domain.Enums.ErrorCode.NotFound">
+            <summary>
+            不存在
+            </summary>
+        </member>
+        <member name="F:TB.AspNetCore.Domain.Enums.ErrorCode.SystemError">
+            <summary>
+            系统错误
+            </summary>
+        </member>
+        <member name="F:TB.AspNetCore.Domain.Enums.ErrorCode.OperationError">
+            <summary>
+            操作失败
+            </summary>
+        </member>
+        <member name="F:TB.AspNetCore.Domain.Enums.ErrorCode.DataError">
+            <summary>
+            数据有误
+            </summary>
+        </member>
+        <member name="F:TB.AspNetCore.Domain.Enums.ErrorCode.FrequentOperation">
+            <summary>
+            操作频繁
+            </summary>
+        </member>
+        <member name="F:TB.AspNetCore.Domain.Enums.ErrorCode.CannotEmpty">
+            <summary>
+            不能为空
+            </summary>
+        </member>
+        <member name="F:TB.AspNetCore.Domain.Enums.ErrorCode.Expired">
+            <summary>
+            已过期
+            </summary>
+        </member>
+        <member name="F:TB.AspNetCore.Domain.Enums.ErrorCode.Relogin">
+            <summary>
+            请重新登录
+            </summary>
+        </member>
+        <member name="F:TB.AspNetCore.Domain.Enums.ErrorCode.NoDo">
+            <summary>
+            暂未开放
+            </summary>
+        </member>
+        <member name="F:TB.AspNetCore.Domain.Enums.ErrorCode.RpwMsgEmpty">
+            <summary>
+            消息内容不能为空
+            </summary>
+        </member>
+        <member name="F:TB.AspNetCore.Domain.Enums.ErrorCode.PicsEmpty">
+            <summary>
+            图片不能为空
+            </summary>
+        </member>
+        <member name="F:TB.AspNetCore.Domain.Enums.ErrorCode.AmountEmpty">
+            <summary>
+            红包金额不能为空
+            </summary>
+        </member>
+        <member name="F:TB.AspNetCore.Domain.Enums.ErrorCode.AmountPub">
+            <summary>
+            金额不能为负数
+            </summary>
+        </member>
+        <member name="F:TB.AspNetCore.Domain.Enums.ErrorCode.TotalAmount">
+            <summary>
+            总数不能为空
+            </summary>
+        </member>
+        <member name="F:TB.AspNetCore.Domain.Enums.ErrorCode.SinglePackage">
+            <summary>
+            单包金额过低
+            </summary>
+        </member>
+        <member name="T:TB.AspNetCore.Domain.Enums.FileType">
+            <summary>
+            上传文件类别枚举
+            </summary>
+        </member>
+        <member name="F:TB.AspNetCore.Domain.Enums.InformationType.About">
+            <summary>
+            公司介绍
+            </summary>
+        </member>
+        <member name="F:TB.AspNetCore.Domain.Enums.InformationType.UseGuide">
+            <summary>
+            使用指南(列表)
+            </summary>
+        </member>
+        <member name="F:TB.AspNetCore.Domain.Enums.MsgContextType.Rpw">
+            <summary>
+            红包墙
+            </summary>
+        </member>
+        <member name="F:TB.AspNetCore.Domain.Enums.MsgContextType.hot">
+            <summary>
+            热点
+            </summary>
+        </member>
+        <member name="T:TB.AspNetCore.Domain.Enums.MsgStatus">
+            <summary>
+            消息状态
+            </summary>
+        </member>
+        <member name="F:TB.AspNetCore.Domain.Enums.MsgStatus.NoReviewed">
+            <summary>
+            未审核
+            </summary>
+        </member>
+        <member name="F:TB.AspNetCore.Domain.Enums.MsgStatus.ReViewed">
+            <summary>
+            审核通过
+            </summary>
+        </member>
+        <member name="F:TB.AspNetCore.Domain.Enums.MsgStatus.Disabled">
+            <summary>
+            禁用
+            </summary>
+        </member>
+        <member name="F:TB.AspNetCore.Domain.Enums.MsgStatus.NoLooked">
+            <summary>
+            未观看
+            </summary>
+        </member>
+        <member name="F:TB.AspNetCore.Domain.Enums.MsgStatus.Looked">
+            <summary>
+            已观看
+            </summary>
+        </member>
+        <member name="F:TB.AspNetCore.Domain.Enums.MsgStatus.Shared">
+            <summary>
+            已分享
+            </summary>
+        </member>
+        <member name="T:TB.AspNetCore.Domain.Enums.OrderStatus">
+            <summary>
+            订单状态
+            </summary>
+        </member>
+        <member name="F:TB.AspNetCore.Domain.Enums.OrderStatus.Pending">
+            <summary>
+            未支付
+            </summary>
+        </member>
+        <member name="F:TB.AspNetCore.Domain.Enums.OrderStatus.Success">
+            <summary>
+            支付成功
+            </summary>
+        </member>
+        <member name="F:TB.AspNetCore.Domain.Enums.OrderStatus.Faild">
+            <summary>
+            支付失败
+            </summary>
+        </member>
+        <member name="F:TB.AspNetCore.Domain.Enums.OrderStatus.Cancelled">
+            <summary>
+            已取消
+            </summary>
+        </member>
+        <member name="T:TB.AspNetCore.Domain.Enums.OrderType">
+            <summary>
+            订单类型
+            </summary>
+        </member>
+        <member name="F:TB.AspNetCore.Domain.Enums.OrderType.RpwRecharge">
+            <summary>
+            红包充值
+            </summary>
+        </member>
+        <member name="T:TB.AspNetCore.Domain.Enums.OrderTypeSearch">
+            <summary>
+            收支类型
+            </summary>
+        </member>
+        <member name="F:TB.AspNetCore.Domain.Enums.OrderTypeSearch.Income">
+            <summary>
+            收入
+            </summary>
+        </member>
+        <member name="F:TB.AspNetCore.Domain.Enums.OrderTypeSearch.Outlay">
+            <summary>
+            支出
+            </summary>
+        </member>
+        <member name="F:TB.AspNetCore.Domain.Enums.PayType.None">
+            <summary>
+            未支付
+            </summary>
+        </member>
+        <member name="F:TB.AspNetCore.Domain.Enums.PayType.WeChat">
+            <summary>
+            微信app支付
+            </summary>
+        </member>
+        <member name="F:TB.AspNetCore.Domain.Enums.PayType.Alipay">
+            <summary>
+            支付宝
+            </summary>
+        </member>
+        <member name="F:TB.AspNetCore.Domain.Enums.PayType.System">
+            <summary>
+            系统内支付
+            </summary>
+        </member>
+        <member name="P:TB.AspNetCore.Domain.Models.Api.AddRpwModel.Content">
+            <summary>
+            内容
+            </summary>
+        </member>
+        <member name="P:TB.AspNetCore.Domain.Models.Api.AddRpwModel.Pics">
+            <summary>
+            提交图片
+            </summary>
+        </member>
+        <member name="P:TB.AspNetCore.Domain.Models.Api.AddRpwModel.RpwCounts">
+            <summary>
+            红包个数
+            </summary>
+        </member>
+        <member name="P:TB.AspNetCore.Domain.Models.Api.AddRpwModel.RpwTotalAmount">
+            <summary>
+            红包总金额
+            </summary>
+        </member>
+        <member name="P:TB.AspNetCore.Domain.Models.Api.AddRpwModel.Type">
+            <summary>
+            红包范围
+            </summary>
+        </member>
+        <member name="P:TB.AspNetCore.Domain.Models.Api.AddRpwModel.IsHasOutLink">
+            <summary>
+            是否添加外链
+            </summary>
+        </member>
+        <member name="P:TB.AspNetCore.Domain.Models.Api.AddRpwModel.OutLinkStr">
+            <summary>
+            外链地址
+            </summary>
+        </member>
+        <member name="P:TB.AspNetCore.Domain.Models.Api.AddRpwModel.Longtude">
+            <summary>
+            经度
+            </summary>
+        </member>
+        <member name="P:TB.AspNetCore.Domain.Models.Api.AddRpwModel.Latitude">
+            <summary>
+            纬度
+            </summary>
+        </member>
+        <member name="P:TB.AspNetCore.Domain.Models.Api.AdvertisingModel.Id">
+            <summary>
+            唯一id
+            </summary>
+        </member>
+        <member name="P:TB.AspNetCore.Domain.Models.Api.AdvertisingModel.AdName">
+            <summary>
+            标题
+            </summary>
+        </member>
+        <member name="P:TB.AspNetCore.Domain.Models.Api.AdvertisingModel.BeginTime">
+            <summary>
+            开始时间
+            </summary>
+        </member>
+        <member name="P:TB.AspNetCore.Domain.Models.Api.AdvertisingModel.EndTime">
+            <summary>
+            结束时间
+            </summary>
+        </member>
+        <member name="P:TB.AspNetCore.Domain.Models.Api.AdvertisingModel.AdPic">
+            <summary>
+            图片s
+            </summary>
+        </member>
+        <member name="P:TB.AspNetCore.Domain.Models.Api.AdvertisingModel.AdDesc">
+            <summary>
+            描述
+            </summary>
+        </member>
+        <member name="P:TB.AspNetCore.Domain.Models.Api.AdvertisingModel.AdLocation">
+            <summary>
+            类型
+            </summary>
+        </member>
+        <member name="P:TB.AspNetCore.Domain.Models.Api.ApiAccountModel.FullName">
+            <summary>
+            真实姓名
+            </summary>
+        </member>
+        <member name="P:TB.AspNetCore.Domain.Models.Api.ApiAccountModel.NickName">
+            <summary>
+            昵称
+            </summary>
+        </member>
+        <member name="P:TB.AspNetCore.Domain.Models.Api.ApiAccountModel.AccountStatus">
+            <summary>
+            账户状态
+            </summary>
+        </member>
+        <member name="P:TB.AspNetCore.Domain.Models.Api.ApiAccountModel.CreateTime">
+            <summary>
+            账户创建时间
+            </summary>
+        </member>
+        <member name="P:TB.AspNetCore.Domain.Models.Api.ApiAccountModel.LastLoginTime">
+            <summary>
+            最后一次登录时间
+            </summary>
+        </member>
+        <member name="P:TB.AspNetCore.Domain.Models.Api.ApiAccountModel.HasOrders">
+            <summary>
+            是否有未支付订单
+            </summary>
+        </member>
+        <member name="P:TB.AspNetCore.Domain.Models.Api.ApiAccountModel.RechargeAmount">
+            <summary>
+            可用现金
+            </summary>
+        </member>
+        <member name="P:TB.AspNetCore.Domain.Models.Api.ApiAccountModel.IncomeAmount">
+            <summary>
+            可取现金额
+            </summary>
+        </member>
+        <member name="P:TB.AspNetCore.Domain.Models.Api.ApiAccountModel.TotalAmount">
+            <summary>
+            总金额/钱包历史总额
+            </summary>
+        </member>
+        <member name="P:TB.AspNetCore.Domain.Models.Api.ApiAccountModel.Reason">
+            <summary>
+            人工认证失败原因
+            </summary>
+        </member>
+        <member name="P:TB.AspNetCore.Domain.Models.Api.AndroidVersion.AppName">
+            <summary>
+            APP名称
+            </summary>
+        </member>
+        <member name="P:TB.AspNetCore.Domain.Models.Api.AndroidVersion.AppVersion">
+            <summary>
+            APP版本号
+            </summary>
+        </member>
+        <member name="P:TB.AspNetCore.Domain.Models.Api.AndroidVersion.AppDownLink">
+            <summary>
+            APP下载地址
+            </summary>
+        </member>
+        <member name="P:TB.AspNetCore.Domain.Models.Api.AndroidVersion.Upgrade">
+            <summary>
+            是否必须更新
+            </summary>
+        </member>
+        <member name="P:TB.AspNetCore.Domain.Models.Api.AndroidVersion.AppDescription">
+            <summary>
+            APP更新描述
+            </summary>
+        </member>
+        <member name="P:TB.AspNetCore.Domain.Models.Api.IosVersion.AppName">
+            <summary>
+            APP名称
+            </summary>
+        </member>
+        <member name="P:TB.AspNetCore.Domain.Models.Api.IosVersion.AppVersion">
+            <summary>
+            APP版本号
+            </summary>
+        </member>
+        <member name="P:TB.AspNetCore.Domain.Models.Api.IosVersion.AppDownLink">
+            <summary>
+            APP下载地址
+            </summary>
+        </member>
+        <member name="P:TB.AspNetCore.Domain.Models.Api.IosVersion.Upgrade">
+            <summary>
+            是否必须更新
+            </summary>
+        </member>
+        <member name="P:TB.AspNetCore.Domain.Models.Api.IosVersion.AppDescription">
+            <summary>
+            APP更新描述
+            </summary>
+        </member>
+        <member name="P:TB.AspNetCore.Domain.Models.Api.FileUploadModel.Type">
+            <summary>
+            文件类型
+            </summary>
+        </member>
+        <member name="P:TB.AspNetCore.Domain.Models.Api.FileUploadModel.Id">
+            <summary>
+            标识
+            </summary>
+        </member>
+        <member name="P:TB.AspNetCore.Domain.Models.Api.FileUploadModel.Picture">
+            <summary>
+            图片base64
+            </summary>
+        </member>
+        <member name="P:TB.AspNetCore.Domain.Models.Api.FileUploadModel.FileName">
+            <summary>
+            文件名
+            </summary>
+        </member>
+        <member name="P:TB.AspNetCore.Domain.Models.Api.FileUploadModel.WaterMarks">
+            <summary>
+            水印
+            </summary>
+        </member>
+        <member name="P:TB.AspNetCore.Domain.Models.Api.MsgContentModel.TotalPrice">
+            <summary>
+            总金额
+            </summary>
+        </member>
+        <member name="P:TB.AspNetCore.Domain.Models.Api.MsgContentModel.TotalCounts">
+            <summary>
+            红包总数
+            </summary>
+        </member>
+        <member name="P:TB.AspNetCore.Domain.Models.Api.MsgContentModel.RemainCounts">
+            <summary>
+            红包剩余个数
+            </summary>
+        </member>
+        <member name="P:TB.AspNetCore.Domain.Models.Api.MsgContentModel.Content">
+            <summary>
+            内容
+            </summary>
+        </member>
+        <member name="P:TB.AspNetCore.Domain.Models.Api.MsgContentModel.Pics">
+            <summary>
+            图片s
+            </summary>
+        </member>
+        <member name="P:TB.AspNetCore.Domain.Models.Api.MsgContentModel.Status">
+            <summary>
+            消息状态
+            </summary>
+        </member>
+        <member name="P:TB.AspNetCore.Domain.Models.Api.MsgContentModel.CreateTime">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:TB.AspNetCore.Domain.Models.Api.MsgContentModel.IsHasOutLink">
+            <summary>
+            是否有外链
+            </summary>
+        </member>
+        <member name="P:TB.AspNetCore.Domain.Models.Api.MsgContentModel.OutLink">
+            <summary>
+            外链
+            </summary>
+        </member>
+        <member name="P:TB.AspNetCore.Domain.Models.Api.SystemSettingModel.CouponForRegist">
+            <summary>
+            注册赠送优惠券的金额
+            </summary>
+        </member>
+        <member name="P:TB.AspNetCore.Domain.Models.Api.SystemSettingModel.ConsumerHotline">
+            <summary>
+            客服电话
+            </summary>
+        </member>
+        <member name="P:TB.AspNetCore.Domain.Models.Api.SystemSettingModel.InviteePackage">
+            <summary>
+            邀请者得优惠券金额
+            </summary>
+        </member>
+        <member name="P:TB.AspNetCore.Domain.Models.Api.SystemSettingModel.InvitedPackage">
+            <summary>
+            被邀请者得到优惠券的金额
+            </summary>
+        </member>
+        <member name="P:TB.AspNetCore.Domain.Models.Api.SystemSettingModel.UserHeadImagePath">
+            <summary>
+            用户头像保存地址
+            </summary>
+        </member>
+        <member name="P:TB.AspNetCore.Domain.Models.Api.SystemSettingModel.WebSite">
+            <summary>
+            网址地址
+            </summary>
+        </member>
+        <member name="P:TB.AspNetCore.Domain.Models.Api.SystemSettingModel.ApiSite">
+            <summary>
+            Api地址
+            </summary>
+        </member>
+        <member name="P:TB.AspNetCore.Domain.Models.Api.SystemSettingModel.WebSiteTest">
+            <summary>
+            网址地址 测试
+            </summary>
+        </member>
+        <member name="P:TB.AspNetCore.Domain.Models.Api.SystemSettingModel.ReportImagePath">
+            <summary>
+            举报图片地址
+            </summary>
+        </member>
+        <member name="P:TB.AspNetCore.Domain.Models.TokenModel.Type">
+            <summary>
+            用户类型,相当于角色使用
+            </summary>
+        </member>
+        <member name="P:TB.AspNetCore.Domain.Models.Web.AdManagerViewSearch.IsEnable">
+            <summary>
+            广告启用禁用 0禁用 1启用  添加广告默认1启用
+            </summary>
+        </member>
+        <member name="P:TB.AspNetCore.Domain.Models.Web.AdManagerViewSearch.AdLink">
+            <summary>
+            条转链接
+            </summary>
+        </member>
+        <member name="P:TB.AspNetCore.Domain.Models.BackstageUserAdd.IdCard">
+            <summary>
+            身份证号
+            </summary>
+        </member>
+        <member name="M:TB.AspNetCore.Domain.Repositorys.IAccountService.AddAccount(TB.AspNetCore.Domain.Models.BackstageUserAdd)">
+            <summary>
+            添加后台管理员
+            </summary>
+            <param name="model">AccountAdd</param>
+            <returns></returns>
+        </member>
+        <member name="M:TB.AspNetCore.Domain.Repositorys.IAccountService.UpdatePwd(TB.AspNetCore.Domain.Models.BackstageUserAdd)">
+            <summary>
+            密码修改
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TB.AspNetCore.Domain.Repositorys.IAccountService.GetBackstageUser(System.String)">
+            <summary>
+            获取后台用户信息
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TB.AspNetCore.Domain.Repositorys.IAccountService.GetBackstageUserList(TB.AspNetCore.Domain.Models.Web.AccountSearchModel)">
+            <summary>
+            管理员列表
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TB.AspNetCore.Domain.Repositorys.IAccountService.GetUserCook">
+            <summary>
+            获取后台用户登录Cookie信息
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:TB.AspNetCore.Domain.Repositorys.IAccountService.LogoutUser">
+            <summary>
+            用户退出
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:TB.AspNetCore.Domain.Repositorys.ICommonService">
+            <summary>
+            公共服务/接码...
+            </summary>
+        </member>
+        <member name="M:TB.AspNetCore.Domain.Repositorys.ICommonService.SaveHelp(TB.AspNetCore.Domain.Models.Web.InformationModel)">
+            <summary>
+            保存帮助管理内容
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TB.AspNetCore.Domain.Repositorys.ICommonService.GetInformation(TB.AspNetCore.Domain.Enums.InformationType,System.String)">
+            <summary>
+            获取帮助管理内容
+            </summary>
+            <param name="type"></param>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TB.AspNetCore.Domain.Repositorys.ICommonService.ApiGetInformation(TB.AspNetCore.Domain.Enums.InformationType)">
+            <summary>
+            获取帮助管理内容2
+            </summary>
+            <param name="type"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TB.AspNetCore.Domain.Repositorys.ICommonService.GetValidCode(System.String)">
+            <summary>
+            获取验证码
+            </summary>
+            <param name="mobile"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TB.AspNetCore.Domain.Repositorys.ICommonService.ApiGetVerifyCode(System.String,System.String,System.String,System.String)">
+            <summary>
+            api获取手机验证码
+            </summary>
+            <param name="mobile"></param>
+            <param name="sign"></param>
+            <param name="apiKey"></param>
+            <param name="accountId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TB.AspNetCore.Domain.Repositorys.ICommonService.GetSMSList(TB.AspNetCore.Domain.Models.Web.SmsSearchModel)">
+            <summary>
+            获取短信
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TB.AspNetCore.Domain.Repositorys.ICommonService.AdManagerList(TB.AspNetCore.Domain.Models.Web.AdManagerViewSearch)">
+            <summary>
+            获取广告列表
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TB.AspNetCore.Domain.Repositorys.ICommonService.GetAdPicModel(System.String)">
+            <summary>
+            获取单条广告
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TB.AspNetCore.Domain.Repositorys.ICommonService.DelAdPic(TB.AspNetCore.Domain.Models.Web.AdManagerViewSearch)">
+            <summary>
+            删除广告位
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TB.AspNetCore.Domain.Repositorys.ICommonService.IsEnableAdPic(TB.AspNetCore.Domain.Models.Web.AdManagerViewSearch)">
+            <summary>
+            禁用启用广告
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TB.AspNetCore.Domain.Repositorys.ICommonService.AdPicAdd_Updata(TB.AspNetCore.Domain.Models.Web.AdManagerViewSearch)">
+            <summary>
+            添加广告
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TB.AspNetCore.Domain.Repositorys.ICommonService.SaveSetting(TB.AspNetCore.Domain.Models.Api.SystemSettingModel)">
+            <summary>
+            保存配置
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TB.AspNetCore.Domain.Repositorys.ICommonService.SaveAndroid(TB.AspNetCore.Domain.Models.Api.AndroidVersion)">
+            <summary>
+            保存android配置
+            </summary>
+            <param name="android"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TB.AspNetCore.Domain.Repositorys.ICommonService.SaveIOS(TB.AspNetCore.Domain.Models.Api.IosVersion)">
+            <summary>
+            保存ios配置
+            </summary>
+            <param name="ios"></param>
+            <returns></returns>
+        </member>
+        <member name="T:TB.AspNetCore.Domain.Repositorys.IDbRepository`1">
+            <summary>
+            封装装ef数据仓储接口
+            </summary>
+        </member>
+        <member name="M:TB.AspNetCore.Domain.Repositorys.IDbRepository`1.FromSql``1(System.String,System.Object[])">
+            <summary>
+            get <see cref="!:TSource" /> from raw sql query
+            the TSource must in database or <see cref="T:Microsoft.EntityFrameworkCore.DbContext" />
+            </summary>
+            <typeparam name="TSource"></typeparam>
+            <param name="sql"></param>
+            <param name="parameters"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TB.AspNetCore.Domain.Repositorys.IDbRepository`1.Single``1(System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}})">
+            <summary>get single or default TSource</summary>
+            <typeparam name="TSource">entity</typeparam>
+            <param name="predicate"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TB.AspNetCore.Domain.Repositorys.IDbRepository`1.First``1(System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}})">
+            <summary>get first or default TSource</summary>
+            <typeparam name="TSource"></typeparam>
+            <param name="predicate"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TB.AspNetCore.Domain.Repositorys.IDbRepository`1.Where``1(System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}})">
+            <summary>select entity by conditions</summary>
+            <typeparam name="TSource"></typeparam>
+            <param name="predicate"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TB.AspNetCore.Domain.Repositorys.IDbRepository`1.Count``1(System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}})">
+            <summary>counting the entity's count under this condition</summary>
+            <typeparam name="TSource"></typeparam>
+            <param name="predicate"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TB.AspNetCore.Domain.Repositorys.IDbRepository`1.Query``1">
+            <summary>return the query</summary>
+            <typeparam name="TSource"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:TB.AspNetCore.Domain.Repositorys.IDbRepository`1.Exists``1(System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}})">
+            <summary>check the condition</summary>
+            <typeparam name="TSource"></typeparam>
+            <param name="predicate"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TB.AspNetCore.Domain.Repositorys.IDbRepository`1.Pages``1(System.Linq.IQueryable{``0},System.Int32,System.Int32,System.Int32@)">
+            <summary>paging the query</summary>
+            <typeparam name="T"></typeparam>
+            <param name="query"></param>
+            <param name="pageIndex">page index</param>
+            <param name="pageSize">page size </param>
+            <param name="count">total row record count</param>
+            <returns></returns>
+        </member>
+        <member name="M:TB.AspNetCore.Domain.Repositorys.IDbRepository`1.Pages``1(System.Int32,System.Int32,System.Int32@)">
+            <summary>paging the query</summary>
+            <typeparam name="T"></typeparam>
+            <param name="pageIndex">page index</param>
+            <param name="pageSize">page size </param>
+            <param name="count">total row record count</param>
+            <returns></returns>
+        </member>
+        <member name="M:TB.AspNetCore.Domain.Repositorys.IDbRepository`1.Pages``1(System.Linq.IQueryable{``0},System.Int32,System.Int32,System.Int32@,System.Int32@)">
+            <summary>
+            分页
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="query"></param>
+            <param name="pageIndex"></param>
+            <param name="pageSize"></param>
+            <param name="count">总条数</param>
+            <param name="pageCount">页数</param>
+            <returns></returns>
+        </member>
+        <member name="M:TB.AspNetCore.Domain.Repositorys.IDbRepository`1.Save">
+            <summary>save all the changes add, update, delete</summary>
+        </member>
+        <member name="M:TB.AspNetCore.Domain.Repositorys.IDbRepository`1.Add(System.Object,System.Boolean)">
+            <summary>add entity to context or database</summary>
+            <param name="entity"></param>
+            <param name="save">save the add and all changes before this to database</param>
+        </member>
+        <member name="M:TB.AspNetCore.Domain.Repositorys.IDbRepository`1.Update(System.Object,System.Boolean)">
+            <summary>update entity to context or database</summary>
+            <param name="entity"></param>
+            <param name="save">save the update and all changes before this to database</param>
+        </member>
+        <member name="M:TB.AspNetCore.Domain.Repositorys.IDbRepository`1.Update(System.Collections.Generic.IEnumerable{System.Object},System.Boolean)">
+            <summary>update entitys to context or database</summary>
+            <param name="list"></param>
+            <param name="save">save the updates and all changes before this to database</param>
+        </member>
+        <member name="M:TB.AspNetCore.Domain.Repositorys.IDbRepository`1.Delete(System.Object,System.Boolean)">
+            <summary>delete entity from context or database</summary>
+            <param name="entity"></param>
+            <param name="save">save the delete and all changes before this to database</param>
+        </member>
+        <member name="M:TB.AspNetCore.Domain.Repositorys.IDbRepository`1.Delete(System.Collections.Generic.IEnumerable{System.Object},System.Boolean)">
+            <summary>delete entitys from context or database</summary>
+            <param name="list"></param>
+            <param name="save">save the deletes and all changes before this to database</param>
+        </member>
+        <member name="T:TB.AspNetCore.Domain.Repositorys.IMemberService">
+            <summary>
+            会员服务
+            </summary>
+        </member>
+        <member name="M:TB.AspNetCore.Domain.Repositorys.IMemberService.Register(System.String,System.String,System.String)">
+            <summary>
+            邀请注册
+            </summary>
+            <param name="accountId"></param>
+            <param name="mobile"></param>
+            <param name="code"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TB.AspNetCore.Domain.Repositorys.IMemberService.Login(System.String,System.String,System.String,System.String,TB.AspNetCore.Domain.Enums.SourceType)">
+            <summary>
+            验证码登录/注册
+            </summary>
+            <param name="mobile">手机号</param>
+            <param name="code">验证码</param>
+            <param name="sign">签名</param>
+            <param name="apiKey">apikey</param>
+            <param name="source">来源类型</param>
+            <returns></returns>
+        </member>
+        <member name="P:TB.AspNetCore.Domain.Repositorys.IPermissionService.CurrentMenus">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:TB.AspNetCore.Domain.Repositorys.IPermissionService.RolePermissions">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:TB.AspNetCore.Domain.Repositorys.IPermissionService.RegistAction(System.Collections.Generic.List{Microsoft.AspNetCore.Mvc.Controllers.ControllerActionDescriptor})">
+            <summary>
+            注册Action
+            </summary>
+            <param name="actionDescriptor"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TB.AspNetCore.Domain.Repositorys.IPermissionService.RegistRole">
+            <summary>
+            注册Role
+            </summary>
+        </member>
+        <member name="M:TB.AspNetCore.Domain.Repositorys.IPermissionService.HasPermission(Microsoft.AspNetCore.Mvc.Filters.ActionExecutingContext,System.String)">
+            <summary>
+            是否有权限
+            </summary>
+            <param name="context"></param>
+            <param name="actionId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TB.AspNetCore.Domain.Repositorys.IPermissionService.GetRoles">
+            <summary>
+            获取角色所拥有的权限
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:TB.AspNetCore.Domain.Repositorys.IPermissionService.DeleteRoles(TB.AspNetCore.Domain.Models.RoleModel)">
+            <summary>
+            删除指定角色
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TB.AspNetCore.Domain.Repositorys.IPermissionService.SaveRoles(TB.AspNetCore.Domain.Models.RoleModel)">
+            <summary>
+            保存,添加,修改角色
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TB.AspNetCore.Domain.Repositorys.IRpwService.GetRpwInfo(System.String,System.Decimal,System.Decimal)">
+            <summary>
+            获取红包墙信息
+            </summary>
+            <param name="accountId"></param>
+            <param name="longtude"></param>
+            <param name="latitude"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TB.AspNetCore.Domain.Repositorys.IRpwService.GetAds(TB.AspNetCore.Domain.Enums.AdLocation)">
+            <summary>
+            获取广告消息
+            </summary>
+            <param name="type"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TB.AspNetCore.Domain.Repositorys.IRpwService.GetMsgInfo(System.Decimal,System.Decimal)">
+            <summary>
+            获取普通消息
+            </summary>
+            <param name="longtude"></param>
+            <param name="latitude"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TB.AspNetCore.Domain.Repositorys.IRpwService.AddRpwInfo(System.String,TB.AspNetCore.Domain.Models.Api.AddRpwModel)">
+            <summary>
+            新增红包墙消息
+            </summary>
+            <param name="accountId"></param>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TB.AspNetCore.Domain.Repositorys.IRpwService.AddMsgInfo(System.String,TB.AspNetCore.Domain.Models.Api.AddRpwModel)">
+            <summary>
+            新增普通消息
+            </summary>
+            <param name="accountId"></param>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

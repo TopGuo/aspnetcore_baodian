@@ -1,0 +1,90 @@
+﻿
+@{
+    ViewData["Title"] = "新用户注册";
+    Layout = "_LayoutRoot";
+}
+<link rel="stylesheet" type="text/css" href="~/css/reset.css" />
+<link rel="stylesheet" type="text/css" href="~/css/style.css" />
+<style type="text/css">
+    footer {
+        display: none;
+    }
+
+    input, select, textarea {
+        max-width: none;
+    }
+
+    #my-cover {
+        display: none;
+    }
+</style>
+<div class="loginbox wait-loaded" style="margin-top:50px;">
+    <form name="loginForm" ng-submit="reg()">        
+        <div class="bnr"><img src="~/images/sharebg2.png" alt="" /></div>
+        <div class="regbox">
+            <ul class="clearfix">
+                <li class="box">
+                    <div class="lt">手机号</div>
+                    <div class="box-flex"><input type="tel" ng-model="model.mobile" name="mobile" ng-pattern="/^1\d{10}$/" placeholder="请输入您的手机号" /></div>
+                </li>
+                <li class="box">
+                    <div class="lt">验证码</div>
+                    <div class="box-flex"><input type="number" ng-model="model.code" autocomplete="off" required ng-minlength="6" maxlength="6" ng-maxlength="6" placeholder="请输入验证码" /></div>
+                    <button class="rt" type="button" ng-disabled="loginForm.mobile.$invalid" ng-click="getCode()" style="line-height:2.5rem">&nbsp;{{times}}&nbsp;</button>
+                </li>
+            </ul>
+        </div>
+        <input type="submit" ng-disabled="loginForm.$invalid" class="d-btn" value="立即注册">
+    </form>
+</div>
+<div id="my-cover">
+    <div class="pop">
+        <h2>恭喜您注册成功</h2>
+        <div class="c-img"><img src="/images/tc.png" alt="" /></div>
+        <p ng-show="showMoney>0">获得<em>{{showMoney}}元</em>优惠券<br>快快下载APP使用吧</p>
+        @*<a href="http://a.app.qq.com/o/simple.jsp?pkgname=com.icbqida.icb" style="text-decoration:none;"><div class="d-btn">曝点APP</div></a>*@
+        <a href="#" style="text-decoration:none;"><div class="d-btn">曝点APP</div></a>
+    </div>
+    <div class="cover"></div>
+</div>
+@section RootScripts
+    {
+    <script type="text/javascript">
+        var from = '@(Context.Request.Query["From"])';
+        var _time = 60;
+        $angular.add(function ($scope, $query, $timeout, $sce) {
+            $scope.times = " 获取验证码 ";
+            $scope.model = { id: "@(this.ViewContext.RouteData.Values["id"])", mobile:"",code:"" };
+            $scope.getCode = function () {
+                $query.post("/webApi/GetValidCode", $scope.model, function (response) {
+                    if (response.status == 200) {
+                        $(".getcode").prop("disabled", true);
+                        var _t = setInterval(function () {
+                            _time--;
+                            if (_time <= 0) {
+                                $(".getcode").text(" 获取验证码 ");
+                                _time = 60;
+                                clearInterval(_t);
+                                $(".getcode").prop("disabled", false);
+                                return;
+                            }
+                            $(".getcode").text("重新获取 (" + _time + ")");
+                        }, 990);
+
+                        $Alert("验证码已经发送成功,请注意查收!");
+                    }
+                });
+            }
+
+            $scope.reg = function () {
+                $query.post("/webapi/Register", $scope.model, function (response) {
+                    if (response.status === 200)
+                    {
+                        $("#my-cover").show();
+                        $scope.showMoney = response.data;
+                    }
+                });
+             };
+         });
+    </script>
+}

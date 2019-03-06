@@ -1,0 +1,184 @@
+﻿@{
+    ViewData["Title"] = "系统设置";
+}
+@using TB.AspNetCore.Application.Services
+@using TB.AspNetCore.Infrastructrue.Extensions
+<style>
+    .form-inline .col-sm-12 {
+        line-height: 55px;
+    }
+
+    .form-inline .col-sm-4 .col-sm-4 {
+        line-height: 35px;
+    }
+
+    .form-inline .control-label {
+        text-align: right;
+    }
+</style>
+<ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active"><a href="#setting_1" aria-controls="setting_1" role="tab" data-toggle="tab">全局设置</a></li>
+    <li role="presentation"><a href="#setting_2" aria-controls="setting_2" role="tab" data-toggle="tab">Android版本设置</a></li>
+    <li role="presentation"><a href="#setting_3" aria-controls="setting_3" role="tab" data-toggle="tab">IOS版本设置</a></li>
+</ul>
+<div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="setting_1">
+        <br />
+        <div class="form-inline">
+            <div class="col-sm-12">
+                <label class="control-label col-sm-2">用户头像保存路径:</label>
+                <div class="col-sm-10">
+                    <input class="form-control" type="text" style="width:100%;max-width:none;" ng-model="model1.userHeadImagePath" placeholder="用户头像保存路径" />
+                </div>
+            </div>
+            <div class="col-sm-12">
+                <label class="control-label col-sm-2">客服电话:</label>
+                <div class="col-sm-10">
+                    <input class="form-control" type="text" ng-model="model1.consumerHotline" placeholder="客服电话" />
+                </div>
+            </div>
+            <div style="display:none;">
+                <div class="col-sm-12">
+                    <label class="control-label col-sm-2">文件上传物理根路径:</label>
+                    <div class="col-sm-10">
+                        <input class="form-control" type="text" style="width:100%;max-width:none;" ng-model="model1.uploadPhysicalRoot" placeholder="文件上传物理根路径" />
+                    </div>
+                </div>
+                <div class="col-sm-12">
+                    <label class="control-label col-sm-2">网站地址:</label>
+                    <div class="col-sm-10">
+                        <input class="form-control" type="text" style="width:100%;max-width:none;" ng-model="model1.webSite" placeholder="网站地址" />
+                    </div>
+                </div>
+                <div class="col-sm-12">
+                    <label class="control-label col-sm-2">举报照片保存路径:</label>
+                    <div class="col-sm-10">
+                        <input class="form-control" type="text" style="width:100%;max-width:none;" ng-model="model1.reportImagePath" placeholder="举报照片保存路径" />
+                    </div>
+                </div>
+                <div class="col-sm-12">
+                    <label class="control-label col-sm-2">支付宝回调路径:</label>
+                    <div class="col-sm-10">
+                        <input class="form-control" type="text" style="width:100%;max-width:none;" ng-model="model1.alipayCallBack" placeholder="支付宝回调路径" />
+                    </div>
+                </div>
+                <div class="col-sm-12">
+                    <label class="control-label col-sm-2">微信App回调路径:</label>
+                    <div class="col-sm-10">
+                        <input class="form-control" type="text" style="width:100%;max-width:none;" ng-model="model1.weChatAppCallBack" placeholder="微信App回调路径" />
+                    </div>
+                </div>
+                <div class="col-sm-12">
+                    <label class="control-label col-sm-2">微信网页回调路径:</label>
+                    <div class="col-sm-10">
+                        <input class="form-control" type="text" style="width:100%;max-width:none;" ng-model="model1.weChatWebCallBack" placeholder="微信网页回调路径" />
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12">
+                <div class="col-sm-10 col-sm-offset-2">
+                    <button class="btn btn-success" ng-click="saveModel1()">保 存</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div role="tabpanel" class="tab-pane" id="setting_2">
+        <br />
+        <div class="form-inline">
+            <div class="col-sm-12">
+                <label class="control-label col-sm-2">APP名称:</label>
+                <div class="col-sm-10">
+                    <input class="form-control" type="text" ng-model="model2.appName" placeholder="APP名称" />
+                </div>
+            </div>
+            <div class="col-sm-12">
+                <label class="control-label col-sm-2">APP版本号:</label>
+                <div class="col-sm-10">
+                    <input class="form-control" type="text" ng-model="model2.appVersion" placeholder="APP版本号" />
+                </div>
+            </div>
+            <div class="col-sm-12">
+                <label class="control-label col-sm-2">APP下载地址:</label>
+                <div class="col-sm-10">
+                    <input class="form-control" type="text" ng-model="model2.appDownLink" placeholder="APP下载地址" />
+                </div>
+            </div>
+            <div class="col-sm-12">
+                <label class="control-label col-sm-2">是否必须更新:<input type="checkbox" ng-model="model2.upgrade" /></label>
+            </div>
+            <div class="col-sm-12">
+                <label class="control-label col-sm-2">APP更新描述:</label>
+                <div class="col-sm-10">
+                    <textarea class="form-control" ng-model="model2.appDescription" placeholder="APP更新描述"></textarea>
+                </div>
+            </div>
+            <div class="col-sm-12">
+                <div class="col-sm-10 col-sm-offset-2">
+                    <button class="btn btn-success" ng-click="saveModel2()">保 存</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div role="tabpanel" class="tab-pane" id="setting_3">
+        <br />
+        <div class="form-inline">
+            <div class="col-sm-12">
+                <label class="control-label col-sm-2">APP名称:</label>
+                <div class="col-sm-10">
+                    <input class="form-control" type="text" ng-model="model3.appName" placeholder="APP名称" />
+                </div>
+            </div>
+            <div class="col-sm-12">
+                <label class="control-label col-sm-2">APP版本号:</label>
+                <div class="col-sm-10">
+                    <input class="form-control" type="text" ng-model="model3.appVersion" placeholder="APP版本号" />
+                </div>
+            </div>
+            <div class="col-sm-12">
+                <label class="control-label col-sm-2">APP下载地址:</label>
+                <div class="col-sm-10">
+                    <input class="form-control" type="text" ng-model="model3.appDownLink" placeholder="APP下载地址" />
+                </div>
+            </div>
+            <div class="col-sm-12">
+                <label class="control-label col-sm-2">是否必须更新:<input type="checkbox" ng-model="model3.upgrade" /></label>
+            </div>
+            <div class="col-sm-12">
+                <label class="control-label col-sm-2">APP更新描述:</label>
+                <div class="col-sm-10">
+                    <textarea class="form-control" ng-model="model3.appDescription" placeholder="APP更新描述"></textarea>
+                </div>
+            </div>
+            <div class="col-sm-12">
+                <div class="col-sm-10 col-sm-offset-2">
+                    <button class="btn btn-success" ng-click="saveModel3()">保 存</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts{
+    <script type="text/javascript">
+        $angular.add(function ($scope, $query, $timeout, $sce) {
+            $scope.model1 =@Html.Raw(SystemSettingService.SystemSetting.GetJson());
+            $scope.model2 =@Html.Raw(SystemSettingService.AndroidVersion.GetJson());
+            $scope.model3 =@Html.Raw(SystemSettingService.IosVersion.GetJson());
+            $scope.saveModel1 = function () {
+                $query.post("/WebApi/SaveSystemSetting", $scope.model1, function (response) {
+                    $Alert(response.message);
+                });
+            };
+            $scope.saveModel2 = function () {
+                $query.post("/WebApi/SaveAndroid", $scope.model2, function (response) {
+                    $Alert(response.message);
+                });
+            };
+            $scope.saveModel3 = function () {
+                $query.post("/WebApi/SaveIOS", $scope.model3, function (response) {
+                    $Alert(response.message);
+                });
+            };
+
+        });
+    </script>
+}

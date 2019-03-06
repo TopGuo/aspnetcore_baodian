@@ -1,0 +1,158 @@
+﻿
+@{
+    ViewData["Title"] = "帮助说明管理";
+    var i = 0;
+    var infos = JsonExtensions.GetStrings<InformationType>().OrderBy(t => t.Item1);
+}
+@using TB.AspNetCore.Domain.Enums;
+@using TB.AspNetCore.Infrastructrue.Extensions
+<style>
+    .ueditor {
+        line-height: 25px;
+    }
+
+    .form-inline .control-label {
+        text-align: right;
+    }
+</style>
+<ul class="nav nav-tabs" role="tablist">
+    @*标签*@
+    @foreach (var type in infos)
+    {
+        <li role="presentation" @(i == 0 ? "class=active" : "")><a href="#setting_@type.Item1" aria-controls="setting_@type.Item1" role="tab" data-toggle="tab" ng-click="getInfo(@(type.Item1))">@type.Item2</a></li>
+        i++;
+    }
+</ul>
+<div class="tab-content">
+    @{
+        i = 0;
+    }
+    @foreach (var type in infos)
+    {
+        <div role="tabpanel" class="tab-pane @(i == 0 ?"active":"")" id="setting_@type.Item1">
+            <br />
+            @*用户指南*@
+            @if (type.Item1 == (int)InformationType.UseGuide)
+            {
+                <button class="btn btn-success" ng-click="newUseGuide(@type.Item1)">新建@(((InformationType)type.Item1).GetString())</button>
+                <p style="margin:0">&nbsp;</p>
+                <ul class="nav nav-tabs" role="tablist" id="navUseGuide">
+                    <li role="presentation" ng-class="$index==0?'active':''" ng-repeat="m in model@(type.Item1)">
+                        <a href="#{{m.id}}" aria-controls="#{{m.id}}" role="tab" data-toggle="tab">{{m.title}}</a>
+                    </li>
+                </ul>
+                <div class="tab-content" id="UseGuide">
+                    <div role="tabpanel" class="tab-pane" ng-class="$index==0?'active':''" id="{{m.id}}" ng-repeat="m in model@(type.Item1)">
+                        <br />{{$$index}}
+                        <div class="form-inline">
+                            <div class="col-sm-12">
+                                <label class="control-label col-sm-2">标题:</label>
+                                <div class="col-sm-10" style="margin-bottom:15px;">
+                                    <input class="form-control" style="width:100%;max-width:none;" type="text" ng-model="m.title" placeholder="标题" />
+                                </div>
+                            </div>
+                            <div class="col-sm-12">
+                                <label class="control-label col-sm-2">描述说明:</label>
+                                <div class="col-sm-10">
+                                    <textarea class="ueditor" config="customConfig" style="height:320px;max-width:none;" ng-model="m.description" placeholder="描述说明">
+                        </textarea>
+                                </div>
+                            </div>
+                            <div class="col-sm-12">
+                                <div class="col-sm-10 col-sm-offset-2">
+                                    <button class="btn btn-success" ng-click="saveHelp(m)">保 存</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+            else
+            {
+                <div class="form-inline">
+                    <input type="hidden" ng-model="model@(type.Item1).type" ng-init="model@(type.Item1).type=@(type.Item1)" />
+                    <div class="col-sm-12">
+                        <label class="control-label col-sm-2">标题:</label>
+                        <div class="col-sm-10" style="margin-bottom:15px;">
+                            <input class="form-control" type="text" ng-init="model@(type.Item1).title='@(type.Item1 != ((int)InformationType.UseGuide) ? type.Item2 : "")'" ng-model="model@(type.Item1).title" placeholder="标题" ng-disabled="model@(type.Item1).type!=@((int)InformationType.UseGuide)" style="display:inline-block;max-width:none;width:100%;" />
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <label class="control-label col-sm-2">描述说明:</label>
+                        <div class="col-sm-10">
+                            <textarea class="ueditor" config="customConfig" style="height:320px;" ng-model="model@(type.Item1).description" placeholder="描述说明">
+                        </textarea>
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <div class="col-sm-10 col-sm-offset-2">
+                            <button class="btn btn-success" ng-click="saveHelp(model@(type.Item1))">保 存</button>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+        i++;
+    }
+</div>
+
+@section Scripts{
+    <script type="text/javascript">
+    $angular.add(function ($scope, $query, $timeout, $sce) {
+        $scope.saveHelp = function (model) {
+            $query.post("/WebApi/SaveHelp", model, function (response) {
+                $Alert(response.message);
+                if (response.status === 200) {
+                    model.id = response.data;
+                }
+            });
+        };
+        $scope.customConfig = {
+            initialFrameWidth: "100%",
+            initialFrameHeight: 320,
+            imageActionName: "Local&path=/Upload/Editor",
+            catcherActionName: "Remote&path=/Upload/Editor",
+            state: "SUCCESS",
+            imageUrlPrefix: "",
+            catcherFieldName: "upfile",
+            catcherUrlPrefix: ''
+        };
+        function getInfo(type) {
+            if (!$scope["model" + type] || !$scope["model" + type].id) {
+                if ($scope["model" + type] instanceof Array) {
+                    return;
+                }
+                var url = "/WebApi/GetInformation";
+                if (type ==@((int)InformationType.UseGuide)){
+                    url = "/WebApi/GetInformationByType";
+                }
+                $query.get(url + "?type=" + type + "&id=" + type, function (response) {
+                    if (response.status == 200) {
+                        if (response.data) {
+                            $scope["model" + type] = response.data;
+                        }
+                    }
+                });
+            }
+        }
+        $scope.newUseGuide = function (type) {
+            var m = "model" + type;
+            if ($scope[m] == null)
+            {
+                $scope[m] = [];
+            }
+            if (_.find($scope[m], { id: "AddNew" }) == null) {
+                $scope[m].push({ type:type,id: 'AddNew', title: " " });
+                $timeout(function () {
+                    $("#UseGuide .tab-pane").removeClass("active");
+                    $("#navUseGuide li").removeClass("active");
+                    $("#navUseGuide a[href='#AddNew']").parent().addClass("active");
+                    $("#AddNew").addClass("active");
+                });
+            }
+        };
+        $scope.getInfo = getInfo;
+        getInfo(@((int)InformationType.About));
+        });
+    </script>
+}

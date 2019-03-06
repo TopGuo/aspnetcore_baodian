@@ -1,0 +1,79 @@
+﻿@{
+    ViewData["Title"] = "短信明细";
+}
+<style type="text/css">
+    .scrollTd {
+        word-break: break-all;
+    }
+
+        .scrollTd div {
+            overflow: hidden;
+            max-height: 25px;
+            max-width: 320px;
+        }
+</style>
+<ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active"><a href="#_sms" aria-controls="_sms" role="tab" data-toggle="tab">短信明细</a></li>
+    <li role="presentation" style="display:none;"><a href="#_booking" aria-controls="_booking" role="tab" data-toggle="tab" ng-click="pageChanged2(false,true)">预约明细</a></li>
+</ul>
+<div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="_sms">
+        <div class="row search">
+            <div class="form-inline">
+                <input type="text" class="form-control" placeholder="手机号" ng-model="search1.mobile" />
+            </div>
+            <div class="form-inline">
+                <input type="text" class="form-control" placeholder="IP" ng-model="search1.ip" />
+            </div>
+            <div class="form-inline">
+                <label class="control-label">开始日期:</label>
+                <input type="text" class="form-control mydatetimepicker" ng-model="search1.startDate" ng-max-date="search1.endDate||defaultDate" placeholder="开始日期" />
+            </div>
+            <div class="form-inline">
+                <label class="control-label">结束日期:</label>
+                <input type="text" class="form-control mydatetimepicker" ng-model="search1.endDate" ng-min-date="search1.startDate" ng-max-date="defaultDate" placeholder="结束日期" />
+            </div>
+            <button class="btn btn-primary" type="button" ng-click="pageChanged1(true)">搜索</button>
+        </div>
+        <table class="table table-hover table-condensed table-bordered">
+            <thead><tr><th>IP</th><th>手机号</th><th>验证码</th><th>发送时间</th></tr></thead>
+            <tbody class="wait-loaded"><tr ng-repeat="model in list1"><td>{{::model.ip}}</td><td>{{::model.mobile}}</td><td>{{::model.code}}</td><td>{{::model.createTime}}</td></tr></tbody>
+        </table>
+        <div class="mypager wait-loaded">
+            <ul uib-pagination total-items="search1.recordCount" items-per-page="search1.pageSize" ng-change="pageChanged1()" ng-model="search1.pageIndex" max-size="7"
+                class="pagination-sm" boundary-links="true" num-pages="search1.numPages" boundary-link-numbers="true" first-text="首页" last-text="末页" previous-text="上一页" next-text="下一页"></ul>
+            <div class="recordCount">共 {{search1.recordCount}} 条</div>
+        </div>
+    </div>
+</div>
+@section scripts{
+    <script type="text/javascript">
+        $angular.add(function ($scope, $query, $timeout, $sce, $compile, $location) {
+            $scope.apis=[{ "name": "获取手机验证码","url": "/v1/GetVerifyCode" },{ "name": "登录/注册","url": "/v1/Login" },{ "name": "查询10公里内附近汽车","url": "/v1/SearchCars" },{ "name": "修改昵称","url": "/v1/SaveNickName" },{ "name": "上传头像","url": "/v1/SaveHeadPicture" },{ "name": "身份证认证","url": "/v1/ApproveIDCard" },{ "name": "驾照认证","url": "/v1/ApproveDriverLicense" },{ "name": "修改姓名","url": "/v1/ChangeFullName" },{ "name": "芝麻认证URL","url": "/v1/ZhimaApprove" },{ "name": "通知芝麻认证结果","url": "/v1/NotifyZhimaResult" },{ "name": "人工身份认证","url": "/v1/UploadPictureToApprove" },{ "name": "缴纳押金(APP)","url": "/v1/PayDeposit" },{ "name": "缴纳押金(小程序)","url": "/v1/PayDeposit_Jsapi" },{ "name": "申请退押金","url": "/v1/ApplyForDeposit" },{ "name": "违章记录","url": "/v1/GetIllegal" },{ "name": "支付用车订单(APP)","url": "/v1/GetUnpaidOrder" },{ "name": "支付用车订单(小程序)","url": "/v1/GetUnpaidOrder_Jsapi" },{ "name": "获取违约详情","url": "/v1/GetBreakContract" },{ "name": "违约申诉","url": "/v1/SendComplain" },{ "name": "同意违约的内容","url": "/v1/AgreeBreakContract" },{ "name": "获取最新用户信息","url": "/v1/RefreshAccount" },{ "name": "我的消息","url": "/v1/MyInfo" },{ "name": "消息已阅读","url": "/v1/ReadedInfo" },{ "name": "邀请链接","url": "/v1/SharedLink" },{ "name": "优惠码兑换","url": "/v1/ExchangeCoupon" },{ "name": "确认用车","url": "/v1/ConfirmCar" },{ "name": "验车","url": "/v1/CheckUpCar" },{ "name": "鸣笛找车","url": "/v1/CallBeep" },{ "name": "开始行程","url": "/v1/StartTrip" },{ "name": "计算里程,费用,时间","url": "/v1/Calculate" },{ "name": "行程中打开车门","url": "/v1/OpenDoor" },{ "name": "行程中关闭车门","url": "/v1/CloseDoor" },{ "name": "取消行程","url": "/v1/CancelTrip" },{ "name": "执行并检测是否允许换车","url": "/v1/CheckCarStatus" },{ "name": "结束行程(APP)","url": "/v1/FinishTrip" },{ "name": "结束行程(小程序)","url": "/v1/FinishTrip_Jsapi" },{ "name": "选择代金券结算(APP)","url": "/v1/ChooseCoupon" },{ "name": "选择代金券结算(小程序)","url": "/v1/ChooseCoupon_Jsapi" },{ "name": "确认结算","url": "/v1/ConfirmPayment" },{ "name": "当前行程","url": "/v1/CurrentTrip" },{ "name": "历史行程","url": "/v1/MyTrip" },{ "name": "我的钱包","url": "/v1/MyWallet" },{ "name": "我的代金券","url": "/v1/MyPackage" },{ "name": "可用代金券","url": "/v1/AvailablePackage" },{ "name": "已使用代金券","url": "/v1/UnavailablePackage" },{ "name": "过期的代金券","url": "/v1/ExpiredPackage" },{ "name": "可开发票订单","url": "/v1/AvailableInvoiceOrder" },{ "name": "申请发票","url": "/v1/RequestInvoice" },{ "name": "开票历史","url": "/v1/InvoiceHistory" },{ "name": "获取用户姓名(转赠)","url": "/v1/GetUserName" },{ "name": "验证用户姓名是否匹配(转赠)","url": "/v1/ValidUserName" },{ "name": "确认转赠","url": "/v1/CommitDonation" },{ "name": "获取可充值列表","url": "/v1/GetRechargeList" },{ "name": "充值","url": "/v1/GetRechargePayment" },{ "name": "反馈类型","url": "/v1/GetFeedbackType" },{ "name": "意见反馈","url": "/v1/SendFeedback" },{ "name": "获取广告","url": "/v1/GetAdvertising" },{ "name": "获取信息类型","url": "/v1/GetInformationType" },{ "name": "获取文字信息","url": "/v1/GetInformation" },{ "name": "获取文字信息连接","url": "/v1/GetInformationUrl" },{ "name": "获取系统配置","url": "/v1/GetSystemSettings" },{ "name": "获取活动列表","url": "/v1/GetActivitys" },{ "name": "APP版本","url": "/v1/GetAppVersion" }];
+
+            $scope.defaultDate = "@DateTime.Now.ToString("yyyy-MM-dd")";
+            $scope.search1 = { pageIndex: 1, pageSize:10 };
+            $scope.search2 = { pageIndex: 1, pageSize: 10 };
+            $scope.search3 = { pageIndex: 1, pageSize: 20,source:"" };
+            $scope.pageChanged1 = function (reIndex) {
+                if (reIndex)
+                {
+                    $scope.search1.pageIndex = 1;
+                }
+                $query.post("/webapi/GetSMSList", $scope.search1, function (response) {
+                    $scope.list1 = response.data;
+                    $scope.search1.recordCount = response.recordCount;
+                });
+            };
+            $scope.pageChanged1();
+            
+            $scope.showFormat = function (value) {
+                var s = $scope.$new();
+                s.value = angular.fromJson(value);
+                var h = $compile("<pre>{{value|json}}</pre>")(s);
+                $Alert(h[0]);
+            };
+        });
+    </script>
+
+}

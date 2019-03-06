@@ -1,0 +1,131 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>TB.AspNetCore.Api</name>
+    </assembly>
+    <members>
+        <member name="M:TB.AspNetCore.Api.Controllers.ApiBaseController.CheckToken(System.String)">
+            <summary>
+            检查返回的token
+            </summary>
+            <param name="token"></param>
+            <returns></returns>
+        </member>
+        <member name="T:TB.AspNetCore.Api.Controllers.MemberController">
+            <summary>
+            会员模块
+            </summary>
+        </member>
+        <member name="M:TB.AspNetCore.Api.Controllers.MemberController.SharedLink">
+            <summary>
+            邀请好友-web页面
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:TB.AspNetCore.Api.Controllers.MemberController.GetCode(System.String,System.String)">
+            <summary>
+            获取验证码
+            </summary>
+            <param name="mobile">手机号(包括166)</param>
+            <param name="sign">加密参数[手机号,apiKey]</param>
+            <returns></returns>
+        </member>
+        <member name="M:TB.AspNetCore.Api.Controllers.MemberController.GenSSign(System.String,System.String,System.Int32)">
+            <summary>
+            生成签名(仿客户端)
+            </summary>
+            <param name="mobile"></param>
+            <param name="code"></param>
+            <param name="type">1:WeChatApp_ApiKey 2:iOS_ApiKey 3:Android_ApiKey</param>
+            <returns></returns>
+        </member>
+        <member name="M:TB.AspNetCore.Api.Controllers.MemberController.GenSSign1(System.String,System.Int32)">
+            <summary>
+            生成签名(仿客户端)
+            </summary>
+            <param name="mobile"></param>
+            <param name="type">1:WeChatApp_ApiKey 2:iOS_ApiKey 3:Android_ApiKey</param>
+            <returns></returns>
+        </member>
+        <member name="M:TB.AspNetCore.Api.Controllers.MemberController.LoginWithCode(System.String,System.String,System.String)">
+            <summary>
+            登录-注册//手机接码/邮箱接码
+            </summary>
+            <param name="mobile">手机号</param>
+            <param name="code">验证码</param>
+            <param name="sign">签名</param>
+            <returns>
+            <see cref="T:TB.AspNetCore.Domain.Models.Api.ApiAccountModel"/>
+            </returns>
+        </member>
+        <member name="T:TB.AspNetCore.Api.Controllers.RpwController">
+            <summary>
+            红包墙模块
+            </summary>
+        </member>
+        <member name="P:TB.AspNetCore.Api.Controllers.RpwController.RpwService">
+            <summary>
+            获取红包墙消息
+            </summary>
+        </member>
+        <member name="M:TB.AspNetCore.Api.Controllers.RpwController.GetHotInfo(System.Decimal,System.Decimal)">
+            <summary>
+            获取热点消息内容
+            </summary>
+            <param name="longtude">经度</param>
+            <param name="latitude">纬度</param>
+            <returns>
+            <see cref="T:TB.AspNetCore.Domain.Models.Api.MsgContentModel" langword="true"/>
+            </returns>
+        </member>
+        <member name="M:TB.AspNetCore.Api.Controllers.RpwController.AddHotInfo(TB.AspNetCore.Domain.Models.Api.AddRpwModel)">
+            <summary>
+            添加热点信息
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TB.AspNetCore.Api.Controllers.RpwController.AddRpwInfo(TB.AspNetCore.Domain.Models.Api.AddRpwModel)">
+            <summary>
+            发布红包墙消息-
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TB.AspNetCore.Api.Controllers.RpwController.GetRpwInfo(System.Decimal,System.Decimal,System.Int32,System.Int32)">
+            <summary>
+            获取红包墙信息
+            </summary>
+            <param name="longtude"></param>
+            <param name="latitude"></param>
+            <param name="pageIndex"></param>
+            <param name="pageSize"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TB.AspNetCore.Api.Controllers.RpwController.GetAppAndroidVersion">
+            <summary>
+            AndroidApp版本检查
+            </summary>
+            <returns>
+            s<see cref="T:TB.AspNetCore.Domain.Models.Api.AndroidVersion"/>
+            </returns>
+        </member>
+        <member name="M:TB.AspNetCore.Api.Controllers.RpwController.GetAppIosVersion">
+            <summary>
+            IOSApp版本检查
+            </summary>
+            <returns>
+            s<see cref="T:TB.AspNetCore.Domain.Models.Api.IosVersion"/>
+            </returns>
+        </member>
+        <member name="M:TB.AspNetCore.Api.Controllers.RpwController.GetAd(TB.AspNetCore.Domain.Enums.AdLocation)">
+            <summary>
+            获取广告/banner/公告
+            </summary>
+            <param name="type"></param>
+            <returns>
+            <see cref="T:TB.AspNetCore.Domain.Models.Api.AdvertisingModel" langword="true"/>
+            </returns>
+        </member>
+    </members>
+</doc>
